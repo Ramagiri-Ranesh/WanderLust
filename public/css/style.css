@@ -1,3 +1,48 @@
-body{
-    background-color: pink;
+/* Nav bar */
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222 !important;
+}
+
+/* Footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222;
+    margin-right: 0.4rem;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-socials , .f-info-links , .f-info-brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.f-info-socials i{
+    color: #222;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info{
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
 }
