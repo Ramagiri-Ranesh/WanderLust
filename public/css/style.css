@@ -94,8 +94,23 @@ body{
     background-color: white;
 }
 
+.show-card{
+    margin-left: 0;
+    margin-right: 0;
+}
+
 /* add button */ /* edit button */
 .add-btn , .btn-edit{
     background-color: #fe424d !important;
     border: none !important;
+}
+
+/* Show page */
+.show-img{
+    height: 30vh;
+}
+
+/* btns in show page */
+.btns{
+    display: flex;
 }
