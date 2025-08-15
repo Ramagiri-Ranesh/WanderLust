@@ -83,22 +83,6 @@ app.delete("/listings/:id", async (req,res) => {
     res.redirect("/listings");
 });
 
-
-
-// app.get("/testListing", async (req,res) => {
-//     let sampleListing = new Listing({
-//         title : "My new Villa",
-//         description : "By the Beach",
-//         price : 1200,
-//         location : "Calangute, Goa",
-//         country : "India"
-//     });
-//     await sampleListing.save();
-//     console.log("sample listing save to DB");
-//     res.send("successful testing");
-// });
-
-
 app.listen(port, (req,res) => {
     console.log(`App is listening to port ${port}`);
     
