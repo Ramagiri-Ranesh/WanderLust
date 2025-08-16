@@ -6,6 +6,7 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const wrapAsync = require('./utils/wrapAsync');
 const ExpressError = require('./utils/ExpressError');
+const { listingSchema } = require('./schema');
 const app = express();
 const port = 8080;
 
@@ -32,6 +33,18 @@ main().then(() => {
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
+
+const validateListing = (req,res,next) => {
+    let {error} = listingSchema.validate(req.body);
+    if(error){
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(404, errMsg);
+    }else{
+        next();
+    }
+};
+
+
 // Home Route
 app.get("/",(req,res) => {
     res.send("Home Route");
@@ -49,12 +62,9 @@ app.get("/listings/new",(req,res) => {
 });
 
 // Create Route
-app.post("/listings", wrapAsync(async (req,res) => {
+app.post("/listings", validateListing, wrapAsync(async (req,res) => {
     // let {title, description, image, price, location, country} = req.body; alternative create a array
     // let listing = req.body.listings;
-    if(!req.body.listings){
-        throw new ExpressError(400,"Send valid data for listing");
-    }
     const newListing =  new Listing(req.body.listings);
     await newListing.save();
     res.redirect("/listings");
@@ -75,11 +85,8 @@ app.get("/listings/:id/edit", wrapAsync(async (req,res) => {
 }));
 
 // Update Route
-app.put("/listings/:id", wrapAsync(async (req,res) => {
+app.put("/listings/:id", validateListing, wrapAsync(async (req,res) => {
     let { id } = req.params;
-    if(!req.body.listings){
-        throw new ExpressError(400,"Send valid data for listing");
-    }
     await Listing.findByIdAndUpdate(id , { ...req.body.listings }, {runValidators : true});
     res.redirect(`/listings/${id}`);
 }));
