@@ -4,19 +4,22 @@
         <div class="col-8 offset-2">
             <h3>Create a new Listing</h3>
             
-            <form action="/listings" method="post">
+            <form action="/listings" method="post" novalidate class="needs-validation">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" placeholder="Add a catchy title" name="listings[title]" class="form-control" id="title">
+                    <input type="text" placeholder="Add a catchy title" name="listings[title]" class="form-control" id="title" required>
+                    <div class="invalid-feedback">Title is required field</div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="listings[description]" id="description" type="text" class="form-control"></textarea>
+                    <textarea name="listings[description]" id="description" type="text" class="form-control" required></textarea>
+                    <div class="invalid-feedback">Description is required field</div>
                 </div>
                 <div class="row">
                     <div class="mb-3 col-md-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="number" placeholder="1200" name="listings[price]" id="price" class="form-control">
+                        <input type="number" placeholder="1200" name="listings[price]" id="price" class="form-control" required>
+                         <div class="invalid-feedback">Price is required field</div>
                     </div>
                     <div class="mb-3 col-md-9">
                         <label for="image" class="form-label">Image/url</label>
@@ -26,11 +29,13 @@
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label for="location" class="form-label">Location</label>
-                        <input type="text" placeholder="Hyderabad, Telangana" name="listings[location]" id="location" class="form-control">
+                        <input type="text" placeholder="Hyderabad, Telangana" name="listings[location]" id="location" class="form-control" required>
+                        <div class="invalid-feedback">Location is required field</div>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="country" class="form-label">Country</label>
-                        <input type="text" placeholder="India" name="listings[country]" id="country" class="form-control">
+                        <input type="text" placeholder="India" name="listings[country]" id="country" class="form-control" required>
+                        <div class="invalid-feedback">Country is required field</div>
                     </div>
                 </div>
                 
